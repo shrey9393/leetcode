@@ -1,0 +1,19 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int n = prices.length;
+        int arr1[] = new int[2];
+        int index1[] = new int[2];
+        int index2[] = new int[2];
+
+        for(int index = n-1;index >= 0;index--){
+            
+            arr1[1] = Integer.max( -prices[index] + index1[0] , 0 + index1[1]);
+            arr1[0] = Integer.max( prices[index] + index2[1] ,  0 + index1[0]);
+
+            index2 = (int [])(index1.clone());
+            index1 = (int [])(arr1.clone());
+        }
+        return arr1[1];
+    }
+}
