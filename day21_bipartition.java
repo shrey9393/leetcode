@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+
 class Solution {
     public boolean possibleBipartition(int n, int[][] dislikes) {
         int col[] = new int[n + 1];
@@ -20,7 +21,7 @@ class Solution {
                 col[i] = 1;
                 while (q.size() != 0) {
                     int t = q.removeFirst();
-                    for (int x : g[t]) { 
+                    for (int x : g[t]) {
                         if (col[x] == col[t]) {
                             return false;
                         }
