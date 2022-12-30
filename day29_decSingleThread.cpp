@@ -8,6 +8,7 @@ public:
             tasks[i].push_back(i);
         }
         sort(tasks.begin(), tasks.end());
+
         priority_queue <vector<int>, vector<vector<int>>, greater<vector<int>>> priorque;
         vector<int> a;
         int maxEnqTime = 0;
