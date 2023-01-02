@@ -1,5 +1,3 @@
-import java.nio.channels.WritePendingException;
-
 class Day2_520DetectCapital {
     public static boolean detectCapitalUse(String word) {
         int c = 0;
@@ -14,13 +12,5 @@ class Day2_520DetectCapital {
             return true;
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        // System.out.println(detectCapitalUse("g"));
-        System.out.println(detectCapitalUse("USA"));
-        System.out.println(detectCapitalUse("FlaG"));
-        System.out.println(detectCapitalUse("g"));
-        System.out.println('a' - 'A');
     }
 }
