@@ -1,4 +1,5 @@
 import java.util.HashMap;
+
 class Solution {
     public static boolean wordPattern(String pattern, String s) {
         String arr[] = s.split(" ");
