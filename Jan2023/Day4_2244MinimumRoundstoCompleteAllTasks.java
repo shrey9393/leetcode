@@ -1,17 +1,14 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Day4_2244MinimumRoundstoCompleteAllTasks {
-    public static int minimumRounds(int[] tasks) {
+    public int minimumRounds(int[] tasks) {
         HashMap<Integer, Integer> hm = new HashMap<>();
-        // HashSet<Integer> hs = new HashSet<>();
 
         for (int i : tasks) {
             if (hm.containsKey(i)) {
                 hm.put(i, hm.get(i) + 1);
             } else {
                 hm.put(i, 1);
-                // hs.add(i);
             }
         }
         int m = 0;
