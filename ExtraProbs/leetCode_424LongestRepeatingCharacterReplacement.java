@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-
 class leetCode_424LongestRepeatingCharacterReplacement {
     public static int characterReplacement(String s, int k) {
         int n = s.length();
