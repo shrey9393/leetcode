@@ -9,7 +9,6 @@ class Day2_520DetectCapital {
         if (c == 0 || c == word.length() || (c == 1 && word.charAt(0) >= 'A' && word.charAt(0) <= 'Z')) {
             return true;
         }
-
         return false;
     }
 }
