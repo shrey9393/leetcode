@@ -1,0 +1,23 @@
+class Solution {
+    public int digSum(int i){
+        int sum =0;
+        while(i>0){
+            sum+=i%10;
+            i/=10;
+        }
+        return sum;
+    }
+    public int differenceOfSum(int[] nums) {
+        int sumarr =0 , sumdigit = 0;
+        for(int i : nums){
+            sumarr+=i;
+            if(i>=10){
+                sumdigit += digSum(i);
+            }
+            else{
+                sumdigit += i;
+            }
+        }
+        return Math.abs(sumarr - sumdigit);
+    }
+}
