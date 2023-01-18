@@ -1,4 +1,4 @@
-import java.util.*;;
+import java.util.*;
 
 class Solution {
     public long countGood(int[] nums, int k) {
