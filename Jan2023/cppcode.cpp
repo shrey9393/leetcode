@@ -1,31 +1,54 @@
-#include <iostream>
-#include <cMath>
-using namespace std;
 class Solution
 {
 public:
-    int minFlipsMonoIncr(string s)
+    bool isvalid(string str)
     {
-        int countf = 0, count1 = 0;
-        for (char c : s)
+        int n = str.size();
+        if (n == 1)
         {
-            if (c == '1')
-            {
-                count1++;
-            }
-            else
-            {
-                if (count1 > 0)
-                {
-                    countf++;
-                }
-            }
-            countf = min(countf, count1);
+            return true;
         }
-        return countf;
+        if (n > 3 || str[0] == '0')
+        {
+            return false;
+        }
+        int num = stoi(str);
+        if (num > 255)
+        {
+            return false;
+        }
+        return true;
+    }
+    void solve(vector<string> &ans, string temp, int i, int part, string s)
+    {
+        if (s.size() == i && part == 4)
+        {
+            ans.push_back(temp.substr(0, temp.size() - 1));
+            return;
+        }
+        else if (s.size() == i || part == 4)
+        {
+            return;
+        }
+        solve(ans, temp + s[i] + ".", i + 1, part + 1, s);
+        if (s.size() > i + 1 && isvalid(s.substr(i, 2)))
+        {
+            solve(ans, temp + s.substr(i, 2) + ".", i + 2, part + 1, s);
+        }
+        if (s.size() > i + 2 && isvalid(s.substr(i, 3)))
+        {
+            solve(ans, temp + s.substr(i, 3) + ".", i + 3, part + 1, s);
+        }
+    }
+    vector<string> restoreIpAddresses(string s)
+    {
+        vector<string> ans;
+        if (s.size() > 12 || s.size() < 4)
+        {
+            return ans;
+        }
+        string temp;
+        solve(ans, temp, 0, 0, s);
+        return ans;
     }
 };
-int main()
-{
-    return 0;
-}
