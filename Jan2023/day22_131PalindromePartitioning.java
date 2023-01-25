@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 class Solution {
@@ -24,10 +25,12 @@ class Solution {
     }
 
     public static List<List<String>> partition(String s) {
-        List<List<String>> ls = new ArrayList<>();
-        List<String> checkPath = new ArrayList<>();
-        partitionHelper(0, s, checkPath, ls);
-        return ls;
+        // List<List<String>> ls = new ArrayList<>();
+        // List<String> checkPath = new ArrayList<>();
+        // partitionHelper(0, s, checkPath, ls);
+        // return ls;
+
+        
     }
 
 }
