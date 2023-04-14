@@ -9,7 +9,7 @@ class Solution {
         int j = 0;
         for (int x : a) {
             st.push(x);
-            if (!st.isEmpty() && st.peek() == b[j]) {
+            while (!st.isEmpty() && st.peek() == b[j]) {
                 st.pop();
                 j++;
             }
