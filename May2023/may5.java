@@ -2,32 +2,19 @@ import java.util.*;
 
 class may5 {
     public static int maxVowels(String s, int k) {
-        // int i = 0;
-        HashSet<String> hs = new HashSet();
-        hs.add("a");
-        hs.add("e");
-        hs.add("i");
-        hs.add("o");
-        hs.add("u");
+        HashSet<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
+        int maxCount = 0;
         int count = 0;
-        for (int i = 0; i < s.length() - k + 1; i++) {
-            if (!hs.contains(s.charAt(i) + "")) {
-                continue;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (vowels.contains(c)) {
+                count++;
             }
-            String p = s.substring(i, i + k);
-            String c[] = p.split("");
-            int tempCount = 0;
-            for (String x : c) {
-                if (hs.contains(x)) {
-                    tempCount++;
-                }
+            if (i >= k && vowels.contains(s.charAt(i - k))) {
+                count--;
             }
-            count = Math.max(count, tempCount);
+            maxCount = Math.max(maxCount, count);
         }
-        return count;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(maxVowels("weallloveyou", 7));
+        return maxCount;
     }
 }
