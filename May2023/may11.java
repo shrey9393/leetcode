@@ -1,5 +1,5 @@
-class Solution {
-    public int maxUncrossedLines(int[] nums1, int[] nums2) {
+class may11 {
+    public static int maxUncrossedLines(int[] nums1, int[] nums2) {
         int m = nums1.length, n = nums2.length;
         if (m < n) {
             int[] temp = nums1;
@@ -22,5 +22,11 @@ class Solution {
             }
         }
         return dp[n];
+    }
+
+    public static void main(String[] args) {
+        int arr[] = { 2, 5, 1, 2, 5 };
+        int brr[] = { 1, 3, 7, 1, 7, 5 };
+        System.out.println(maxUncrossedLines(arr, brr));
     }
 }
