@@ -1,33 +1,29 @@
 import java.util.*;
 
-class AddString {
-    public static String addStrings(String num1, String num2) {
-        int carry = 0;
-        StringBuilder sb = new StringBuilder();
-        int n1 = num1.length() - 1;
-        int n2 = num2.length() - 1;
+class Assignment_6_challenging_task {
+    public static void main(String[] args) throws java.lang.Exception {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        // sc.nextLine(); // Consume the newline character
 
-        while (n1 >= 0 || n2 >= 0) {
-            int x1 = (n1 >= 0) ? (num1.charAt(n1) - '0') : 0;
-            int x2 = n2 >= 0 ? num2.charAt(n2) - '0' : 0;
+        while (t-- > 0) {
+            int arr[] = new int[26];
+            int slen = sc.nextInt();
+            sc.nextLine();
+            String s = sc.next();
 
-            int sum = x1 + x2 + carry;
-            carry = sum / 10;
-            sum = sum % 10;
+            for (int i = 0; i < s.length(); i++) {
+                arr[s.charAt(i) - 'a']++;
+            }
 
-            sb.append(sum);
+            int count = 0;
+            for (int i = 0; i < 26; i++) {
+                if (arr[i] > 1) {
+                    count += arr[i] - 1;
+                }
+            }
 
-            n1--;
-            n2--;
+            System.out.println(count);
         }
-
-        if (carry != 0) {
-            sb.append(carry);
-        }
-        return sb.reverse().toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(addStrings("456", "77"));
     }
 }
