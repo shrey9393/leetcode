@@ -5,7 +5,6 @@ class Solution {
             int bitA = a & 1;
             int bitB = b & 1;
             int bitC = c & 1;
-
             if (bitC == 0) {
                 fp += (bitA + bitB); 
             } else {
@@ -13,12 +12,10 @@ class Solution {
                     fp += 1; 
                 }
             }
-
             a >>= 1;
             b >>= 1;
             c >>= 1;
         }
-
         return fp;
     }
 }
