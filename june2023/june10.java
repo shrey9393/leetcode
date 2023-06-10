@@ -1,33 +1,33 @@
-class June10 {
-    public static boolean fillSum(int maxValArr, int index, int maxSum, int n) {
-        int arr[] = new int[n];
-        arr[index] = maxValArr;
-        int sum = 0;
-        for (int i = index - 1; i > -1; i--) {
-            arr[i] = arr[i + 1] - 1;
-            if (arr[i] <= 0) {
-                arr[i] = 1;
+class Solution {
+    public int maxValue(int n, int index, int maxSum) {
+        long leftPointer = index;
+        long rightPointer = n - index - 1;
+        long startPointer = 1;
+        long endPointer = maxSum;
+        while (startPointer <= endPointer) {
+            long midValue = startPointer + (endPointer - startPointer) / 2;
+            long m = midValue - 1;
+            long leftSide = 0;
+            long rightSide = 0;
+            if (m >= leftPointer) {
+                long notInRange = m - leftPointer;
+                leftSide = m * (m + 1) / 2 - (notInRange) * (notInRange + 1) / 2;
+            } else {
+                leftSide = m * (m + 1) / 2 + 1 * (leftPointer - m);
             }
-            sum += arr[i];
-        }
-        for (int i = index + 1; i < n; i++) {
-            arr[i] = arr[i - 1] - 1;
-            if (arr[i] <= 0) {
-                arr[i] = 1;
+            if (m >= rightPointer) {
+                long notInRange = m - rightPointer;
+                rightSide = m * (m + 1) / 2 - (notInRange) * (notInRange + 1) / 2;
+            } else {
+                rightSide = m * (m + 1) / 2 + 1 * (rightPointer - m);
             }
-            sum += arr[i];
+            long sum = rightSide + leftSide + midValue;
+            if (sum > maxSum) {
+                endPointer = midValue - 1;
+            } else {
+                startPointer = midValue + 1;
+            }
         }
-        return sum < maxSum;
-    }
-
-    public static int maxValue(int n, int index, int maxSum) {
-        
-        int maxValArr = 
-        if (!fillSum(n, index, maxSum, index)) {
-        }
-    }
-
-    public static void main(String[] args) {
-
+        return (int) endPointer;
     }
 }
