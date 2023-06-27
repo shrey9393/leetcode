@@ -12,7 +12,7 @@ class GFG {
 
             String S = read.readLine().trim();
 
-            Solution ob = new Solution();
+            shortpali ob = new shortpali();
             String ans = ob.removeConsecutiveCharacter(S);
 
             System.out.println(ans);
