@@ -1,8 +1,10 @@
+import java.util.*;
+
 class Solution {
 
-    private String createLine(List<String> line, int i, String[] words, int maxWidth) {
+    static String createLine(List<String> line, int i, String[] words, int maxWidth) {
         int baseLength = -1;
-        for (String word: line) {
+        for (String word : line) {
             baseLength += word.length() + 1;
         }
 
@@ -24,10 +26,10 @@ class Solution {
             line.set(j, line.get(j) + " ".repeat(spacesPerWord));
         }
 
-        return String.join(" ",  line);
+        return String.join(" ", line);
     }
 
-    private List<String> getWords(int i, String[] words, int maxWidth) {
+    static List<String> getWords(int i, String[] words, int maxWidth) {
         List<String> currentLine = new ArrayList<>();
         int currLength = 0;
 
@@ -40,7 +42,7 @@ class Solution {
         return currentLine;
     }
 
-    public List<String> fullJustify(String[] words, int maxWidth) {
+    static List<String> fullJustify(String[] words, int maxWidth) {
         List<String> ans = new ArrayList<>();
         int i = 0;
         while (i < words.length) {
@@ -48,11 +50,13 @@ class Solution {
             i += currentLine.size();
             ans.add(createLine(currentLine, i, words, maxWidth));
         }
-        
+
         return ans;
     }
-    
-   
-    
-    
+
+    public static void main(String[] args) {
+        String arr[] = { "This", "is", "an", "example", "of", "text", "justification." };
+        List<String> al = fullJustify(arr, 16);
+    }
+
 }
