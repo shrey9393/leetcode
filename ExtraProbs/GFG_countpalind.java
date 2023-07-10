@@ -10,7 +10,7 @@ class GFG {
         while (t > 0) {
             String str = sc.nextLine();
             // System.out.println(str.length());
-            Solution ob = new Solution();
+            lexosort ob = new lexosort();
             System.out.println(ob.countPS(str));
             t--;
         }
