@@ -21,7 +21,7 @@ class Solution {
                 h |= 1 << skills.get(skill);
             people.add(h);
         }
-        
+
         req_mask = (1 << n) - 1;
         dp = new int[1 << n][m];
         choice = new boolean[1 << n][m];
