@@ -26,8 +26,4 @@ class Solution {
         return dfs(c1, c2, c3, 0, 0, 0, dp);
 
     }
-
-    public static void main(String[] args) {
-        System.out.println(isInterleave("aabc", "abad", "aabcabad"));
-    }
 }
