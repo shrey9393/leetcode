@@ -1,20 +1,18 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
 class Solution {
-    public int furthestDistanceFromOrigin(String moves) {
-        int c1 = 0, c2 = 0;
-        for (int i = 0; i < moves.length(); i++) {
-            if (moves.charAt(i) == 'R') {
-                c1--;
-            } else {
-                c1++;
-            }
+    public String destCity(List<List<String>> paths) {
+        HashSet<String> hs = new HashSet<>();
+        for (List<String> x : paths) {
+            hs.add(x.get(1));
         }
-        for (int i = 0; i < moves.length(); i++) {
-            if (moves.charAt(i) == 'L') {
-                c2--;
-            } else {
-                c2++;
-            }
+        for (List<String> x : paths) {
+            hs.remove(x.get(1));
         }
-        return Math.max(c1, c2);
+        return hs.iterator().next();
+
     }
 }
