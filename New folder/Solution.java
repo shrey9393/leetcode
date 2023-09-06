@@ -1,18 +1,11 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-
 class Solution {
-    public String destCity(List<List<String>> paths) {
-        HashSet<String> hs = new HashSet<>();
-        for (List<String> x : paths) {
-            hs.add(x.get(1));
+    public int totalHammingDistance(int[] nums) {
+        int ans = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                ans += Integer.bitCount(nums[i] ^ nums[j]);
+            }
         }
-        for (List<String> x : paths) {
-            hs.remove(x.get(1));
-        }
-        return hs.iterator().next();
-
+        return ans;
     }
 }

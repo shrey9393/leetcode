@@ -14,16 +14,17 @@ class Node {
 */
 
 class Solution {
-    HashMap<Node,Node> hm=  new HashMap<>();
+    HashMap<Node, Node> hm = new HashMap<>();
+
     public Node copyRandomList(Node head) {
-        if(head ==null){
+        if (head == null) {
             return null;
         }
-        if(hm.containsKey(head)){
+        if (hm.containsKey(head)) {
             return hm.get(head);
         }
         Node x = new Node(head.val);
-        hm.put(head,x);
+        hm.put(head, x);
         x.next = copyRandomList(head.next);
         x.random = copyRandomList(head.random);
         return x;
