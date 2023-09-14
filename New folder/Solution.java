@@ -1,41 +1,43 @@
 import java.util.*;
 
 class Solution {
+    public List<String> findItinerary(List<List<String>> tickets) {
+        // Create a map to store the graph of airports and their destinations
+        HashMap<String, PriorityQueue<String>> graph = new HashMap<>();
+
+        // Build the graph
+        for (List<String> ticket : tickets) {
+            String from = ticket.get(0);
+            String to = ticket.get(1);
+            graph.computeIfAbsent(from, k -> new PriorityQueue<>()).add(to);
+        }
+
+        List<String> itinerary = new ArrayList<>();
+        dfs("JFK", graph, itinerary);
+
+        // Reverse the result since we start from JFK
+        Collections.reverse(itinerary);
+        return itinerary;
+    }
+
+    private void dfs(String airport, HashMap<String, PriorityQueue<String>> graph, List<String> itinerary) {
+        PriorityQueue<String> destinations = graph.get(airport);
+        while (destinations != null && !destinations.isEmpty()) {
+            String nextAirport = destinations.poll();
+            dfs(nextAirport, graph, itinerary);
+        }
+        itinerary.add(airport);
+    }
 
     public static void main(String[] args) {
-        String s = "08:40 am";
-        int hr = Integer.parseInt(s.substring(0, 2));
-        int min = Integer.parseInt(s.substring(3, 5));
-        String am_pm = s.substring(6).trim();
-        int req = 16;
-        int delay = 5;
+        Solution solution = new Solution();
+        List<List<String>> tickets = new ArrayList<>();
+        tickets.add(Arrays.asList("MUC", "LHR"));
+        tickets.add(Arrays.asList("JFK", "MUC"));
+        tickets.add(Arrays.asList("SFO", "SJC"));
+        tickets.add(Arrays.asList("LHR", "SFO"));
 
-        // Calculate the total delay time in minutes
-        int total_delay = (req + 1) * (delay + 1);
-
-        // Add the delay to the current time
-        int new_min = (min + total_delay) % 60;
-        int carry_hour = (min + total_delay) / 60;
-
-        int new_hr = (hr + carry_hour + (new_min / 60)) % 12; // Use % 12 to handle 12-hour format
-
-        // Handle cases where the hour becomes 0
-        if (new_hr == 0) {
-            new_hr = 12;
-        }
-
-        // Adjust for 12-hour format (AM/PM)
-        if (hr + carry_hour + (new_min / 60) >= 12) {
-            am_pm = "pm";
-        } else {
-            am_pm = "am";
-        }
-
-        // Ensure hours and minutes are displayed with leading zeros
-        String new_hr_str = String.format("%02d", new_hr);
-        String new_min_str = String.format("%02d", new_min);
-
-        System.out.println("Original Time: " + hr + ":" + min + " " + am_pm);
-        System.out.println("New Time after Delay: " + new_hr_str + ":" + new_min_str + " " + am_pm);
+        List<String> itinerary = solution.findItinerary(tickets);
+        System.out.println(itinerary);
     }
 }
