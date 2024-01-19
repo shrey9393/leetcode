@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Solution {
     public HashMap<String, Integer> hm = new HashMap<>();
 
@@ -31,4 +32,16 @@ class Solution {
         }
         return ans;
     }
+=======
+class Solution {
+    public int climbStairs(int n) {
+        int x = 1, j = 1;
+        for (int i = 0; i < n - 1; i++) {
+            int temp = x;
+            x += j;
+            j = temp;
+        }
+        return x;
+    }
+>>>>>>> 6a0b46beb92301085b28e48027255d2d7ae293d1
 }
